@@ -3,5 +3,8 @@ import { Todo } from '../../../components/todo/todo';
 
 export default createBoard({
     name: 'Todo',
-    Board: () => <Todo />
+    Board: () => <Todo />,
+    environmentProps: {
+        windowWidth: 1148,
+    },
 });

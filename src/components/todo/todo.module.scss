@@ -1,2 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+$Very-Light-Gray: hsl(0, 0%, 98%);
+$Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
+$Light-Grayish-Blue: hsl(233, 11%, 84%);
+$Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
+$Dark-Grayish-Blue: hsl(236, 9%, 61%);
 .root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  row-gap: 20px;
+  overflow: auto;
+  margin: 15px;
+  padding: 10px;
+  font-size: 18px;
+}
+.form {
+  display: block;
+  width: 100%;
+}
+.form-label {
+ width: 20px;
+ height: 20px;
+ border: 1px;
+}
+.form-input {
+  
+  width: 80%;
 }
