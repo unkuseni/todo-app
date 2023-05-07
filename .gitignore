@@ -11,7 +11,12 @@ node_modules
 dist
 dist-ssr
 *.local
-
+*.sketch
+*.fig
+*.sketch
+*.fig
+*.xd
+.prettierignore
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
