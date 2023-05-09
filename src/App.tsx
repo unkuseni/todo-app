@@ -17,17 +17,26 @@ function App() {
     return (
         <ThemeProvider theme={theme === Theme.Light ? lightTheme : darkTheme}>
             <div
-                className={Classnames(App_module.theme, {
-                    [App_module.light]: theme === Theme.Light,
-                })}
+                className={Classnames(
+                    App_module.theme,
+                    {
+                        [App_module.light]: theme === Theme.Light,
+                    },
+                    App_module['img-back']
+                )}
             >
-                <div className={App_module.header}>
-                    <h2>Todo</h2>
-                    <button className={App_module.toggle} onClick={handleToggleTheme}>
-                        <img src={theme === Theme.Light ? moonIcon : sunIcon} alt="Toggle theme" />
-                    </button>
+                <div className={App_module.container}>
+                    <div className={App_module.header}>
+                        <h2 className={App_module.title}>TODO</h2>
+                        <button className={App_module.toggle} onClick={handleToggleTheme}>
+                            <img
+                                src={theme === Theme.Light ? moonIcon : sunIcon}
+                                alt="Toggle theme"
+                            />
+                        </button>
+                    </div>
+                    <Todo />
                 </div>
-                <Todo />
             </div>
         </ThemeProvider>
     );

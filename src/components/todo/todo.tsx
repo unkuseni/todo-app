@@ -4,6 +4,7 @@ import React, { useState, useCallback, useMemo, FormEvent, useReducer, useContex
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ThemeContext } from '../Theme/ThemeProvider';
 import iconCross from '../../assets/icon-cross.svg';
+import iconCheck from '../../assets/icon-check.svg';
 
 enum Filter {
     All = 'all',
@@ -92,7 +93,12 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
             filteredTasks.map((task, index) => (
                 <Draggable key={task.text} draggableId={task.text} index={index}>
                     {(provided) => (
-                        <li key={task.text} ref={provided.innerRef} {...provided.draggableProps}>
+                        <li
+                            key={task.text}
+                            ref={provided.innerRef}
+                            {...provided.draggableProps}
+                            className={styles.item}
+                        >
                             <label {...provided.dragHandleProps}>
                                 <input
                                     type="checkbox"
@@ -133,7 +139,7 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
         <div className={classNames(styles.root, className)}>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <label htmlFor="todo" className={styles['form-label']}>
-                    todo
+                    {/* Add an icon checkmark when task is completed */}
                 </label>
                 <input
                     type="text"
@@ -144,7 +150,7 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                     className={styles['form-input']}
                 />
             </form>
-            <div>
+            <div className={styles['list-items']}>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId="tasks">
                         {(provided) => (
