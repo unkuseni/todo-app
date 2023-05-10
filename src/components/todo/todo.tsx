@@ -87,7 +87,7 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                 return tasks;
         }
     }, [tasks, filter]);
-
+// task items
     const taskItems = useMemo(
         () =>
             filteredTasks.map((task, index) => (
