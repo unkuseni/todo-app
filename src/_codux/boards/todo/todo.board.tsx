@@ -5,6 +5,7 @@ export default createBoard({
     name: 'Todo',
     Board: () => <Todo />,
     environmentProps: {
-        windowWidth: 1148,
+        windowWidth: 375,
+        windowHeight: 667,
     },
 });

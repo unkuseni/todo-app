@@ -4,7 +4,7 @@ import React, { useState, useCallback, useMemo, FormEvent, useReducer, useContex
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ThemeContext } from '../Theme/ThemeProvider';
 import iconCross from '../../assets/icon-cross.svg';
-import iconCheck from '../../assets/icon-check.svg';
+
 
 enum Filter {
     All = 'all',
@@ -161,6 +161,10 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                         )}
                     </Droppable>
                 </DragDropContext>
+            <div>
+                <span>{remainingItems} items left</span>
+                <button onClick={handleClearCompleted}>Clear completed</button>
+            </div>
             </div>
             <div>
                 <button
@@ -181,10 +185,6 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                 >
                     Completed
                 </button>
-            </div>
-            <div>
-                <span>{remainingItems} items left</span>
-                <button onClick={handleClearCompleted}>Clear completed</button>
             </div>
             <style jsx>{`
                 .completed {
