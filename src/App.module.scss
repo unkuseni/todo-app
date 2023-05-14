@@ -19,7 +19,7 @@ $Dark-Grayish-Blue: hsl(236, 9%, 61%);
   max-width: none;
 }
 .img-back {
-  background-image: url('../src/assets/bg-mobile-light.jpg');
+  background: url('../src/assets/bg-mobile-light.jpg'), $Very-Light-Gray;
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 10px;

@@ -5,7 +5,6 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { ThemeContext } from '../Theme/ThemeProvider';
 import iconCross from '../../assets/icon-cross.svg';
 
-
 enum Filter {
     All = 'all',
     Active = 'active',
@@ -87,7 +86,7 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                 return tasks;
         }
     }, [tasks, filter]);
-// task items
+    // task items
     const taskItems = useMemo(
         () =>
             filteredTasks.map((task, index) => (
@@ -161,12 +160,12 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                         )}
                     </Droppable>
                 </DragDropContext>
-            <div>
-                <span>{remainingItems} items left</span>
-                <button onClick={handleClearCompleted}>Clear completed</button>
+                <div className={styles.tracker}>
+                    <span>{remainingItems} items left</span>
+                    <button onClick={handleClearCompleted}>Clear completed</button>
+                </div>
             </div>
-            </div>
-            <div>
+            <div className={styles.filters}>
                 <button
                     className={classNames({ active: filter === Filter.All })}
                     onClick={() => setFilter(Filter.All)}

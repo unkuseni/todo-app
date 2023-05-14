@@ -59,6 +59,9 @@ li {
 .list-items {
   width: 100%;
   background: transparent;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0px 5px 27px 1px $Light-Grayish-Blue;
 }
 .item {
   display: flex;
@@ -67,25 +70,27 @@ li {
   justify-items: center;
   align-content: center;
   justify-content: space-between;
-  background-color: $Light-Grayish-Blue;
+  background-color: $Very-Light-Gray;
   color: $Very-Dark-Grayish-Blue;
+  margin: 0px;
+
   button {
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   height: 15px;
-   width: 15px;
-   padding: 0;
-   border: none;
-   cursor: pointer;
-   background-color: transparent;
-   margin-right: 10px;
-  //  make the img fit in the button
-   img {
-    display: block;
-   max-width: 100%;
-   max-height: 100%;
-   }
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 15px;
+    width: 15px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    margin-right: 10px;
+    //  make the img fit in the button
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+    }
   }
   label {
     input[type='checkbox'] {
@@ -109,4 +114,25 @@ li {
     justify-content: space-evenly;
     align-content: center;
   }
+  border-bottom: 1px solid $Dark-Grayish-Blue;
+  border-radius: 0px;
+}
+.tracker {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  background-color: $Very-Light-Gray;
+  color: $Very-Dark-Grayish-Blue;
+  button {
+    padding: 0;
+    color: $Very-Dark-Grayish-Blue;
+  }
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.filters {
 }

@@ -6,8 +6,8 @@ export default createBoard({
     name: 'App',
     Board: () => <App className={Todo_module.root} />,
     environmentProps: {
-        windowWidth: 1022,
-        windowHeight: 768,
-        canvasWidth: 1044,
+        windowWidth: 375,
+        windowHeight: 667,
+        canvasWidth: 373,
     },
 });
