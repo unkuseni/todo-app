@@ -78,6 +78,9 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
 
     const filteredTasks = useMemo(() => {
         switch (filter) {
+            /* This code block is defining a `useMemo` hook that filters the `tasks` array based on the
+      `filter` state. The `filter` state is an enum with three possible values: `All`, `Active`, and
+      `Completed`. */
             case Filter.Active:
                 return tasks.filter((task) => !task.completed);
             case Filter.Completed:
@@ -143,7 +146,7 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                 <input
                     type="text"
                     id="todo"
-                    placeholder="Add a new task"
+                    placeholder="Create a new todo..."
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                     className={styles['form-input']}
