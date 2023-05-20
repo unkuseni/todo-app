@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import styles from './todo.module.scss';
 import React, { useState, useCallback, useMemo, FormEvent, useReducer, useContext } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { ThemeContext } from '../Theme/ThemeProvider';
 import iconCross from '../../assets/icon-cross.svg';
 
 enum Filter {
@@ -52,7 +51,6 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
     const [inputValue, setInputValue] = useState<string>('');
     const [tasks, dispatch] = useReducer(tasksReducer, []);
     const [filter, setFilter] = useState<Filter>(Filter.All);
-    const theme = useContext(ThemeContext);
     const handleSubmit = useCallback(
         (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
@@ -107,7 +105,7 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                                     checked={task.completed}
                                     onChange={() => handleComplete(index)}
                                 />
-                                <span className={task.completed ? 'completed' : ''}>
+                                <span className={task.completed ? styles.completed : ''}>
                                     {task.text}
                                 </span>
                             </label>
@@ -188,15 +186,6 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                     Completed
                 </button>
             </div>
-            <style jsx>{`
-                .completed {
-                    text-decoration: line-through;
-                }
-
-                .active {
-                    font-weight: bold;
-                }
-            `}</style>
         </div>
     );
 };

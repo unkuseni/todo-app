@@ -3,44 +3,33 @@ $Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
 $Light-Grayish-Blue: hsl(233, 11%, 84%);
 $Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
 $Dark-Grayish-Blue: hsl(236, 9%, 61%);
-// App is not rendering right
-.App {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+$mobile-light-img: url(./assets/bg-mobile-light.jpg);
+$mobile-dark-img: url(./assets/bg-mobile-dark.jpg);
+$desktop-light-img: url(./assets/bg-desktop-light.jpg);
+$desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  row-gap: 5px;
+  overflow: auto;
+  background-color: $Very-Light-Grayish-Blue;
+  background-image: $mobile-light-img;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+  color: $Very-Light-Gray;
+  height: 100%;
+  width: 100%;
 }
-
 .header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  max-width: none;
-}
-.img-back {
-  background: url('../src/assets/bg-mobile-light.jpg'), $Very-Light-Gray;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  padding: 10px;
-  height: 100vh;
-  // Add a media query for the img at 450px
-  @media (min-width: 450px) {
-    background-image: url('../src/assets/bg-desktop-light.jpg');
-  }
-  color: $Very-Light-Gray;
-  max-width: 1024px;
-}
-.title {
-  text-align: center;
-  letter-spacing: 10px;
-  text-transform: uppercase;
-}
-.container {
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 25px;
-  max-width: 512px;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
 }
