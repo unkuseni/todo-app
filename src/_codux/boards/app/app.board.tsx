@@ -1,14 +1,15 @@
 import { createBoard } from '@wixc3/react-board';
 import App from '../../../App';
 import Todo_module from '../../../components/todo/todo.module.scss';
+import Classnames from 'classnames';
 
 export default createBoard({
     name: 'App',
-    Board: () => <App className={Todo_module.root} />,
+    Board: () => <App />,
     environmentProps: {
-        windowWidth: 375,
+        windowWidth: 876,
         windowHeight: 667,
-        canvasWidth: 373,
+        canvasWidth: 490,
         canvasHeight: 676,
     },
 });

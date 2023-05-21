@@ -8,7 +8,7 @@ $mobile-dark-img: url(./assets/bg-mobile-dark.jpg);
 $desktop-light-img: url(./assets/bg-desktop-light.jpg);
 $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
 .container {
-  display: flex;
+  display: block;
   flex-direction: column;
   align-items: center;
   justify-items: center;
@@ -24,6 +24,9 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
   color: $Very-Light-Gray;
   height: 100%;
   width: 100%;
+  min-width: 350px;
+  max-width: 1280px;
+  margin: 0px;
 }
 .header {
   display: flex;

@@ -5,6 +5,7 @@ $Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
 $Light-Grayish-Blue: hsl(233, 11%, 84%);
 $Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
 $Dark-Grayish-Blue: hsl(236, 9%, 61%);
+$Bright-Blue: hsl(220, 98%, 61%);
 $Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
 .root {
@@ -14,12 +15,15 @@ $Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65
   justify-items: center;
   align-content: center;
   justify-content: center;
-  row-gap: 20px;
+  row-gap: 15px;
   overflow: auto;
-  margin: 15px;
+  margin: 0px;
   padding: 10px;
   font-size: 10px;
   background-color: transparent;
+  width: 100%;
+  height: auto;
+  min-width: 260px;
 }
 .form {
   display: block;
@@ -30,12 +34,7 @@ $Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65
   height: 20px;
   border: 1px;
 }
-.completed {
-  text-decoration: line-through;
-}
-.active {
-  font-weight: bold;
-}
+
 .form > input {
   width: 100%;
   height: 40px;
@@ -141,4 +140,44 @@ li {
   padding-left: 10px;
 }
 .filters {
+  background-color: $Very-Light-Gray;
+  color: $Dark-Grayish-Blue;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  gap: 0px 10px;
+  cursor: inherit;
+  button {
+    padding: 0;
+    color: inherit;
+    border: none;
+    &:hover {
+      color: $Very-Dark-Grayish-Blue;
+    }
+    &:focus {
+      color: $Bright-Blue;
+      border: none;
+    }
+    &:active {
+      color: $Bright-Blue;
+    }
+    border-radius: 0px;
+    font-weight: 700;
+    font-size: 1px;
+    font-size: 1.3em;
+    outline: none;
+  }
+ 
+}
+.completed {
+  text-decoration: line-through;
+}
+.active {
+  font-weight: bold;
+  color: $Bright-Blue;
 }
