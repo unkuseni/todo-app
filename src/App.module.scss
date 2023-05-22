@@ -7,6 +7,7 @@ $mobile-light-img: url(./assets/bg-mobile-light.jpg);
 $mobile-dark-img: url(./assets/bg-mobile-dark.jpg);
 $desktop-light-img: url(./assets/bg-desktop-light.jpg);
 $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
+
 .container {
   display: block;
   flex-direction: column;
@@ -16,12 +17,7 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
   justify-content: center;
   row-gap: 5px;
   overflow: auto;
-  background-color: $Very-Light-Grayish-Blue;
-  background-image: $mobile-light-img;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top;
-  color: $Very-Light-Gray;
+  
   height: 100%;
   width: 100%;
   min-width: 350px;
@@ -35,4 +31,24 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
   justify-items: center;
   align-content: center;
   justify-content: center;
+}
+.light-theme {
+  .container {
+background-color: $Very-Light-Grayish-Blue;
+  background-image: $mobile-light-img;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+  color: $Very-Light-Gray;
+  }
+}
+.dark-theme {
+  .container {
+background-color: $Very-Dark-Grayish-Blue;
+  background-image: $mobile-dark-img;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+  color: $Very-Light-Gray;
+  }
 }

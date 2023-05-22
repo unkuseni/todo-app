@@ -1,31 +1,49 @@
-import classNames from 'classnames';
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { Todo } from './components/todo/todo';
+import classNames from 'classnames';
 import styles from './App.module.scss';
 import moonIcon from './assets/icon-moon.svg';
 import sunIcon from './assets/icon-sun.svg';
+import { ThemeContext } from './Theme';
+
 interface AppProps {
     className?: string;
 }
-const App: React.FC<AppProps> = ({ className }) => {
-    const [themeMode, setThemeMode] = useState('light');
 
-    const handleToggleTheme = useCallback(
-        () => setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light')),
-        []
-    );
+
+
+
+
+const App: React.FC<AppProps> = ({ className }) => {
+    const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+    const toggleTheme = () => {
+        setTheme(theme === 'light' ? 'dark' : 'light');
+    };
 
     return (
-        <div className={classNames(styles.app, className, `${styles.theme} ${styles.container}`)}>
-            <div className={`${styles.header} ${styles[themeMode]}`}>
-                <h2 className={styles.title}>TODO</h2>
-                <button className={styles.toggle} onClick={handleToggleTheme}>
-                    <img src={themeMode === 'light' ? moonIcon : sunIcon} alt="Toggle theme" />
-                </button>
+        <ThemeContext.Provider value={theme}>
+            <div
+                className={classNames({
+                    [styles['dark-theme']]: theme === 'dark',
+                    [styles['light-theme']]: theme === 'light',
+                })}
+            >
+                <div>
+                    <h2>TODO</h2>
+                    <button onClick={toggleTheme}>
+                        {theme === 'light' ? (
+                            <img src={moonIcon} alt="moon icon" />
+                        ) : (
+                            <img src={sunIcon} alt="sun icon" />
+                        )}
+                    </button>
+                </div>
+                <Todo />
             </div>
-            <Todo />
-        </div>
+        </ThemeContext.Provider>
     );
 };
 
 export default App;
+
