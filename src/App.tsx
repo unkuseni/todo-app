@@ -43,9 +43,9 @@ const App: React.FC<AppProps> = ({ className }) => {
                     [styles['light-theme']]: theme === 'light',
                 })}
             >
-                <div>
+                <div className={styles.header}>
                     <h2>TODO</h2>
-                    <button onClick={toggleTheme}>
+                    <button onClick={toggleTheme} className={styles.theme_button}>
                         {theme === 'light' ? (
                             <img src={moonIcon} alt="moon icon" />
                         ) : (
@@ -53,7 +53,10 @@ const App: React.FC<AppProps> = ({ className }) => {
                         )}
                     </button>
                 </div>
-                <Todo/>
+                <Todo />
+                <article>
+                    <p>Drag and drop to reorder list</p>
+                </article>
             </div>
         </ThemeContext.Provider>
     );

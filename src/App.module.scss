@@ -17,7 +17,7 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
   justify-content: center;
   row-gap: 5px;
   overflow: auto;
-  
+
   height: 100%;
   width: 100%;
   min-width: 350px;
@@ -30,25 +30,29 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
   align-items: center;
   justify-items: center;
   align-content: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 10px;
 }
 .light-theme {
   .container {
-background-color: $Very-Light-Grayish-Blue;
-  background-image: $mobile-light-img;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top;
-  color: $Very-Light-Gray;
+    background-color: $Very-Light-Grayish-Blue;
+    background-image: $mobile-light-img;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    color: $Very-Light-Gray;
   }
 }
 .dark-theme {
   .container {
-background-color: $Very-Dark-Grayish-Blue;
-  background-image: $mobile-dark-img;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: top;
-  color: $Very-Light-Gray;
+    background-color: $Very-Dark-Grayish-Blue;
+    background-image: $mobile-dark-img;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top;
+    color: $Very-Light-Gray;
   }
+}
+.theme_button {
+  padding: 0em;
 }
