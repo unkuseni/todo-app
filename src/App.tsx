@@ -1,30 +1,44 @@
-import React, { useState } from 'react';
-import { Todo } from './components/todo/todo';
+import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import styles from './App.module.scss';
-import moonIcon from './assets/icon-moon.svg';
-import sunIcon from './assets/icon-sun.svg';
 import { ThemeContext } from './Theme';
 
-interface AppProps {
+import moonIcon from './assets/icon-moon.svg';
+import sunIcon from './assets/icon-sun.svg';
+import styles from './App.module.scss';
+import { Todo } from './components/todo/todo';
+
+type AppProps = {
     className?: string;
-}
-
-
-
-
+};
 
 const App: React.FC<AppProps> = ({ className }) => {
-    const [theme, setTheme] = useState<'light' | 'dark'>('light');
+    // Set the initial theme based on the user's preferred color scheme
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const [theme, setTheme] = useState<'light' | 'dark'>(prefersDarkMode ? 'dark' : 'light');
 
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
 
+    // Update the theme when the user's preferred color scheme changes
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        const handleChange = () => {
+            setTheme(mediaQuery.matches ? 'dark' : 'light');
+        };
+
+        mediaQuery.addEventListener('change', handleChange);
+
+        return () => {
+            mediaQuery.removeEventListener('change', handleChange);
+        };
+    }, []);
+
     return (
         <ThemeContext.Provider value={theme}>
             <div
-                className={classNames({
+                className={classNames(className, {
                     [styles['dark-theme']]: theme === 'dark',
                     [styles['light-theme']]: theme === 'light',
                 })}
@@ -39,11 +53,10 @@ const App: React.FC<AppProps> = ({ className }) => {
                         )}
                     </button>
                 </div>
-                <Todo />
+                <Todo/>
             </div>
         </ThemeContext.Provider>
     );
 };
 
 export default App;
-
