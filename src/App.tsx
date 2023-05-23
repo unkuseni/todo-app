@@ -54,7 +54,7 @@ const App: React.FC<AppProps> = ({ className }) => {
                     </button>
                 </div>
                 <Todo />
-                <article>
+                <article className={styles.drag_text}>
                     <p>Drag and drop to reorder list</p>
                 </article>
             </div>

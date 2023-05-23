@@ -56,3 +56,12 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
 .theme_button {
   padding: 0em;
 }
+.drag_text {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  background-color: transparent;
+}
