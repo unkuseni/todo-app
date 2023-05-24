@@ -3,11 +3,6 @@ $Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
 $Light-Grayish-Blue: hsl(233, 11%, 84%);
 $Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
 $Dark-Grayish-Blue: hsl(236, 9%, 61%);
-
-$mobile-dark-img: url(./assets/bg-mobile-dark.jpg);
-
-$desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
-
 .container {
   display: block;
   flex-direction: column;
@@ -20,7 +15,6 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
   height: 100%;
   width: 100%;
   min-width: 350px;
-  max-width: 1280px;
   margin: 0px;
   padding: 10px;
 }
@@ -36,27 +30,22 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
 .container.light-theme {
   $mobile-img: url(./assets/bg-mobile-light.jpg);
   $desktop-img: url(./assets/bg-desktop-light.jpg);
-  
-    background-color: $Very-Light-Grayish-Blue;
-    background-image: $mobile-img;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top;
-    color: $Very-Light-Gray;
-  
+ background: $Very-Dark-Grayish-Blue $desktop-img top / contain no-repeat;
+  color: $Very-Light-Gray;
 }
 .container.dark-theme {
-$mobile-img: url(./assets/bg-mobile-dark.jpg);
-$desktop-img: url(./assets/bg-desktop-dark.jpg);
-    background-color: $Very-Dark-Grayish-Blue;
-    background-image: $mobile-img;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top;
-    color: $Very-Light-Gray;
+  $mobile-img: url(./assets/bg-mobile-dark.jpg);
+  $desktop-img: url(./assets/bg-desktop-dark.jpg);
+ background: $Very-Dark-Grayish-Blue $desktop-img top / contain no-repeat;
+  color: $Very-Light-Gray;
 }
 .theme_button {
   padding: 0em;
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+  border: 0px solid transparent;
 }
 .drag_text {
   display: flex;

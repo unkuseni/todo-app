@@ -60,11 +60,11 @@ button {
 
 button:hover {
   border-color: #646cff;
-  outline: none;
+  
 }
 
 button:focus,
-button:focus-visible {
+button:focus-visible, button:hover {
   outline: none;
 }
 
@@ -78,7 +78,5 @@ button:focus-visible {
     color: #747bff;
   }
 
-  button {
-    background-color: #f9f9f9;
-  }
+ 
 }

@@ -99,7 +99,6 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
                             ref={provided.innerRef}
                             {...provided.draggableProps}
                             className={classNames(
-                                // Add a conditional class based on the theme property
                                 styles.item,
                                 theme === 'dark' && styles.dark
                             )}

@@ -47,20 +47,22 @@ const App: React.FC<AppProps> = ({ className }) => {
                     styles.container
                 )}
             >
-                <div className={styles.header}>
-                    <h2>TODO</h2>
-                    <button onClick={toggleTheme} className={styles.theme_button}>
-                        {theme === 'light' ? (
-                            <img src={moonIcon} alt="moon icon" />
-                        ) : (
-                            <img src={sunIcon} alt="sun icon" />
-                        )}
-                    </button>
+                <div>
+                    <div className={styles.header}>
+                        <h2>TODO</h2>
+                        <button onClick={toggleTheme} className={styles.theme_button}>
+                            {theme === 'light' ? (
+                                <img src={moonIcon} alt="moon icon" />
+                            ) : (
+                                <img src={sunIcon} alt="sun icon" />
+                            )}
+                        </button>
+                    </div>
+                    <Todo theme="light" />
+                    <article className={styles.drag_text}>
+                        <p>Drag and drop to reorder list</p>
+                    </article>
                 </div>
-                <Todo theme="light" />
-                <article className={styles.drag_text}>
-                    <p>Drag and drop to reorder list</p>
-                </article>
             </div>
         </ThemeContext.Provider>
     );

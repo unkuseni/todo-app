@@ -42,7 +42,7 @@ $Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65
   border: none;
   outline: none;
   padding-left: 10px;
-  font-size: 10px;
+  font-size: inherit;
   font-family: 'Josefin Sans', sans-serif;
   background-color: $Very-Light-Gray;
   color: $Dark-Grayish-Blue;
@@ -136,7 +136,7 @@ li {
     padding: 0;
     color: $Very-Dark-Grayish-Blue;
     &:hover {
-      outline: 0px;
+      outline: none;
     }
     border: 0px solid rgb(100, 108, 255);
   }
@@ -158,7 +158,6 @@ li {
   cursor: inherit;
   button {
     padding: 0;
-    color: inherit;
     border: none;
     &:hover {
       color: $Very-Dark-Grayish-Blue;
@@ -175,13 +174,14 @@ li {
     font-size: 1px;
     font-size: 1.3em;
     outline: none;
+    color: inherit;
   }
   border-radius: 5px;
 }
 .completed {
   text-decoration: line-through;
 }
-.active {
+button.active {
   font-weight: bold;
   color: $Bright-Blue;
 }
