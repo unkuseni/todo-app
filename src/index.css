@@ -60,6 +60,7 @@ button {
 
 button:hover {
   border-color: #646cff;
+  outline: none;
 }
 
 button:focus,

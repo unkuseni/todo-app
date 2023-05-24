@@ -38,10 +38,14 @@ const App: React.FC<AppProps> = ({ className }) => {
     return (
         <ThemeContext.Provider value={theme}>
             <div
-                className={classNames(className, {
-                    [styles['dark-theme']]: theme === 'dark',
-                    [styles['light-theme']]: theme === 'light',
-                })}
+                className={classNames(
+                    className,
+                    {
+                        [styles['dark-theme']]: theme === 'dark',
+                        [styles['light-theme']]: theme === 'light',
+                    },
+                    styles.container
+                )}
             >
                 <div className={styles.header}>
                     <h2>TODO</h2>
@@ -53,7 +57,7 @@ const App: React.FC<AppProps> = ({ className }) => {
                         )}
                     </button>
                 </div>
-                <Todo />
+                <Todo theme="light" />
                 <article className={styles.drag_text}>
                     <p>Drag and drop to reorder list</p>
                 </article>

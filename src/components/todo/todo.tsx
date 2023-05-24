@@ -17,6 +17,7 @@ interface Task {
 
 interface TodoProps {
     className?: string;
+    theme: 'light' | 'dark';
 }
 type TaskAction =
     | { type: 'add'; task: Task }
@@ -47,7 +48,7 @@ function tasksReducer(state: Task[], action: TaskAction) {
     }
 }
 
-export const Todo: React.FC<TodoProps> = ({ className }) => {
+export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
     const [inputValue, setInputValue] = useState<string>('');
     const [tasks, dispatch] = useReducer(tasksReducer, []);
     const [filter, setFilter] = useState<Filter>(Filter.All);
@@ -97,7 +98,11 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                             key={task.text}
                             ref={provided.innerRef}
                             {...provided.draggableProps}
-                            className={styles.item}
+                            className={classNames(
+                                // Add a conditional class based on the theme property
+                                styles.item,
+                                theme === 'dark' && styles.dark
+                            )}
                         >
                             <label {...provided.dragHandleProps}>
                                 <input
@@ -136,8 +141,11 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
         [filteredTasks]
     );
     return (
-        <div className={classNames(styles.root, className)}>
-            <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={classNames(styles.root,theme === 'dark' && styles.dark)}>
+            <form
+                onSubmit={handleSubmit}
+                className={classNames(styles.form, theme === 'dark' && styles.dark)}
+            >
                 <label htmlFor="todo" className={styles['form-label']}>
                     {/* Add an icon checkmark when task is completed */}
                 </label>
@@ -161,12 +169,12 @@ export const Todo: React.FC<TodoProps> = ({ className }) => {
                         )}
                     </Droppable>
                 </DragDropContext>
-                <div className={styles.tracker}>
+                <div className={classNames(styles.tracker, theme === 'dark' && styles.dark)}>
                     <span>{remainingItems} items left</span>
                     <button onClick={handleClearCompleted}>Clear completed</button>
                 </div>
             </div>
-            <div className={styles.filters}>
+            <div className={classNames(styles.filters, theme === 'dark' && styles.dark)}>
                 <button
                     className={classNames({ active: filter === Filter.All })}
                     onClick={() => setFilter(Filter.All)}

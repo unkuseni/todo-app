@@ -3,9 +3,9 @@ $Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
 $Light-Grayish-Blue: hsl(233, 11%, 84%);
 $Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
 $Dark-Grayish-Blue: hsl(236, 9%, 61%);
-$mobile-light-img: url(./assets/bg-mobile-light.jpg);
+
 $mobile-dark-img: url(./assets/bg-mobile-dark.jpg);
-$desktop-light-img: url(./assets/bg-desktop-light.jpg);
+
 $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
 
 .container {
@@ -17,12 +17,12 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
   justify-content: center;
   row-gap: 5px;
   overflow: auto;
-
   height: 100%;
   width: 100%;
   min-width: 350px;
   max-width: 1280px;
   margin: 0px;
+  padding: 10px;
 }
 .header {
   display: flex;
@@ -33,25 +33,27 @@ $desktop-dark-img: url(./assets/bg-desktop-dark.jpg);
   justify-content: space-between;
   padding: 10px;
 }
-.light-theme {
-  .container {
+.container.light-theme {
+  $mobile-img: url(./assets/bg-mobile-light.jpg);
+  $desktop-img: url(./assets/bg-desktop-light.jpg);
+  
     background-color: $Very-Light-Grayish-Blue;
-    background-image: $mobile-light-img;
+    background-image: $mobile-img;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top;
     color: $Very-Light-Gray;
-  }
+  
 }
-.dark-theme {
-  .container {
+.container.dark-theme {
+$mobile-img: url(./assets/bg-mobile-dark.jpg);
+$desktop-img: url(./assets/bg-desktop-dark.jpg);
     background-color: $Very-Dark-Grayish-Blue;
-    background-image: $mobile-dark-img;
+    background-image: $mobile-img;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: top;
     color: $Very-Light-Gray;
-  }
 }
 .theme_button {
   padding: 0em;

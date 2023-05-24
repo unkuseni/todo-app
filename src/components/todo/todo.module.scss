@@ -135,6 +135,10 @@ li {
   button {
     padding: 0;
     color: $Very-Dark-Grayish-Blue;
+    &:hover {
+      outline: 0px;
+    }
+    border: 0px solid rgb(100, 108, 255);
   }
   padding-right: 10px;
   padding-left: 10px;
@@ -172,7 +176,7 @@ li {
     font-size: 1.3em;
     outline: none;
   }
- 
+  border-radius: 5px;
 }
 .completed {
   text-decoration: line-through;
