@@ -1,8 +1,17 @@
+// LIGHT THEME
 $Very-Light-Gray: hsl(0, 0%, 98%);
 $Very-Light-Grayish-Blue: hsl(236, 33%, 92%);
 $Light-Grayish-Blue: hsl(233, 11%, 84%);
 $Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
 $Dark-Grayish-Blue: hsl(236, 9%, 61%);
+// DARK THEME
+// $Very-Dark-Blue: hsl(235, 21%, 11%);
+// $Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+// $Light-Grayish-Blue: hsl(234, 39%, 85%);
+// $Light-Grayish-Blue: hsl(236, 33%, 92%); // HOVER
+// $Dark-Grayish-Blue: hsl(234, 11%, 52%);
+// $Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
+// $Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
 .container {
   display: block;
   flex-direction: column;
@@ -26,26 +35,8 @@ $Dark-Grayish-Blue: hsl(236, 9%, 61%);
   align-content: center;
   justify-content: space-between;
   padding: 10px;
-}
-.container.light-theme {
-  $mobile-img: url(./assets/bg-mobile-light.jpg);
-  $desktop-img: url(./assets/bg-desktop-light.jpg);
- background: $Very-Dark-Grayish-Blue $desktop-img top / contain no-repeat;
-  color: $Very-Light-Gray;
-}
-.container.dark-theme {
-  $mobile-img: url(./assets/bg-mobile-dark.jpg);
-  $desktop-img: url(./assets/bg-desktop-dark.jpg);
- background: $Very-Dark-Grayish-Blue $desktop-img top / contain no-repeat;
-  color: $Very-Light-Gray;
-}
-.theme_button {
-  padding: 0em;
-  &:hover,
-  &:focus {
-    outline: none;
-  }
-  border: 0px solid transparent;
+  margin-top: 35px;
+  font-size: 1.5em;
 }
 .drag_text {
   display: flex;
@@ -55,4 +46,32 @@ $Dark-Grayish-Blue: hsl(236, 9%, 61%);
   align-content: center;
   justify-content: center;
   background-color: transparent;
+  margin-top: 25px;
+  
+}
+.theme_button {
+  padding: 0em;
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+  border: 0px solid transparent;
+}
+h2 {
+  letter-spacing: 10px;
+}
+.container.light-theme {
+  $mobile-img: url(./assets/bg-mobile-light.jpg);
+  $desktop-img: url(./assets/bg-desktop-light.jpg);
+  background: $Very-Light-Gray $mobile-img top / contain no-repeat;
+  .drag_text {
+     color: $Dark-Grayish-Blue;
+  }
+  @media screen and (min-width: 768px) {
+    background: $Very-Light-Gray $desktop-img top / contain no-repeat;
+  }
+}
+.container.dark-theme {
+  $mobile-img: url(./assets/bg-mobile-dark.jpg);
+  $desktop-img: url(./assets/bg-desktop-dark.jpg);
 }
