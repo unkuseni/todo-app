@@ -5,8 +5,8 @@ export default createBoard({
     name: 'Todo',
     Board: () => <Todo theme="dark" />,
     environmentProps: {
-        windowWidth: 375,
-        windowHeight: 667,
+        windowWidth: 1508,
+        windowHeight: 1368,
         canvasWidth: 259,
         canvasHeight: 164,
     },

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { ThemeContext } from './Theme';
-
 import moonIcon from './assets/icon-moon.svg';
 import sunIcon from './assets/icon-sun.svg';
 import styles from './App.module.scss';
@@ -58,7 +57,7 @@ const App: React.FC<AppProps> = ({ className }) => {
                             )}
                         </button>
                     </div>
-                    <Todo theme="light" />
+                    <Todo theme={theme}/>
                     <article className={styles.drag_text}>
                         <p>Drag and drop to reorder list</p>
                     </article>

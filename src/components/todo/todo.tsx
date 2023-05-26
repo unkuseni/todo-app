@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './todo.module.scss';
-import React, { useState, useCallback, useMemo, FormEvent, useReducer, useContext } from 'react';
+import React, { useState, useCallback, useMemo, FormEvent, useReducer, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import iconCross from '../../assets/icon-cross.svg';
 
@@ -13,6 +13,7 @@ enum Filter {
 interface Task {
     text: string;
     completed: boolean;
+    id: number;
 }
 
 interface TodoProps {
@@ -28,7 +29,12 @@ type TaskAction =
 function tasksReducer(state: Task[], action: TaskAction) {
     switch (action.type) {
         case 'add':
-            return [...state, action.task];
+            const newTask: Task = {
+                id: Date.now(),
+                text: action.task.text,
+                completed: false,
+            };
+            return [...state, newTask];
         case 'complete':
             return state.map((task, index) =>
                 index === action.index ? { ...task, completed: !task.completed } : task
@@ -40,8 +46,8 @@ function tasksReducer(state: Task[], action: TaskAction) {
         case 'reorder':
             const { sourceIndex, destIndex } = action;
             const newTasks = [...state];
-            const [removed] = newTasks.splice(sourceIndex, 1);
-            newTasks.splice(destIndex, 0, removed);
+            const [removed] = newTasks.splice(Number(sourceIndex), 1);
+            newTasks.splice(Number(destIndex), 0, removed);
             return newTasks;
         default:
             return state;
@@ -52,11 +58,24 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
     const [inputValue, setInputValue] = useState<string>('');
     const [tasks, dispatch] = useReducer(tasksReducer, []);
     const [filter, setFilter] = useState<Filter>(Filter.All);
+    const [isMobile, setIsMobile] = useState<boolean>(
+        window.matchMedia('(max-width: 634px)').matches
+    );
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(max-width: 634px)');
+        const handleResize = () => setIsMobile(mediaQuery.matches);
+        mediaQuery.addEventListener('change',handleResize);
+        return () => mediaQuery.removeEventListener('change',handleResize);
+    }, []);
     const handleSubmit = useCallback(
         (event: FormEvent<HTMLFormElement>) => {
             event.preventDefault();
             if (inputValue) {
-                dispatch({ type: 'add', task: { text: inputValue, completed: false } });
+                dispatch({
+                    type: 'add',
+                    task: { text: inputValue, id: Date.now(), completed: false },
+                });
             }
             setInputValue('');
         },
@@ -75,6 +94,7 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
         dispatch({ type: 'clearCompleted' });
     }, []);
 
+    
     const filteredTasks = useMemo(() => {
         switch (filter) {
             /* This code block is defining a `useMemo` hook that filters the `tasks` array based on the
@@ -92,16 +112,13 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
     const taskItems = useMemo(
         () =>
             filteredTasks.map((task, index) => (
-                <Draggable key={task.text} draggableId={task.text} index={index}>
+                <Draggable key={task.id.toString()} draggableId={task.id.toString()} index={index}>
                     {(provided) => (
                         <li
-                            key={task.text}
+                            key={task.id.toString()}
                             ref={provided.innerRef}
                             {...provided.draggableProps}
-                            className={classNames(
-                                styles.item,
-                                theme === 'dark' && styles.dark
-                            )}
+                            className={classNames(styles.item)}
                         >
                             <label {...provided.dragHandleProps}>
                                 <input
@@ -140,7 +157,7 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
         [filteredTasks]
     );
     return (
-        <div className={classNames(styles.root,theme === 'dark' && styles.dark)}>
+        <div className={classNames(styles.root)}>
             <form
                 onSubmit={handleSubmit}
                 className={classNames(styles.form, theme === 'dark' && styles.dark)}
@@ -157,9 +174,9 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
                     className={styles['form-input']}
                 />
             </form>
-            <div className={styles['list-items']}>
+            <div className={classNames(styles['list-items'], theme === 'dark' && styles.dark)}>
                 <DragDropContext onDragEnd={onDragEnd}>
-                    <Droppable droppableId="tasks">
+                    <Droppable droppableId={`${tasks}`}>
                         {(provided) => (
                             <ul {...provided.droppableProps} ref={provided.innerRef}>
                                 {taskItems}
@@ -170,29 +187,52 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
                 </DragDropContext>
                 <div className={classNames(styles.tracker, theme === 'dark' && styles.dark)}>
                     <span>{remainingItems} items left</span>
+                    {!isMobile && (
+                        <div className={classNames(styles.filters, theme === 'dark' && styles.dark)}>
+                            <button
+                                className={classNames({ active: filter === Filter.All })}
+                                onClick={() => setFilter(Filter.All)}
+                            >
+                                All
+                            </button>
+                            <button
+                                className={classNames({ active: filter === Filter.Active })}
+                                onClick={() => setFilter(Filter.Active)}
+                            >
+                                Active
+                            </button>
+                            <button
+                                className={classNames({ active: filter === Filter.Completed })}
+                                onClick={() => setFilter(Filter.Completed)}
+                            >
+                                Completed
+                            </button>
+                        </div>)}
                     <button onClick={handleClearCompleted}>Clear completed</button>
                 </div>
             </div>
-            <div className={classNames(styles.filters, theme === 'dark' && styles.dark)}>
-                <button
-                    className={classNames({ active: filter === Filter.All })}
-                    onClick={() => setFilter(Filter.All)}
-                >
-                    All
-                </button>
-                <button
-                    className={classNames({ active: filter === Filter.Active })}
-                    onClick={() => setFilter(Filter.Active)}
-                >
-                    Active
-                </button>
-                <button
-                    className={classNames({ active: filter === Filter.Completed })}
-                    onClick={() => setFilter(Filter.Completed)}
-                >
-                    Completed
-                </button>
-            </div>
+            { isMobile && (
+                <div className={classNames(styles.filters, theme === 'dark' && styles.dark)}>
+                    <button
+                        className={classNames({ active: filter === Filter.All })}
+                        onClick={() => setFilter(Filter.All)}
+                    >
+                        All
+                    </button>
+                    <button
+                        className={classNames({ active: filter === Filter.Active })}
+                        onClick={() => setFilter(Filter.Active)}
+                    >
+                        Active
+                    </button>
+                    <button
+                        className={classNames({ active: filter === Filter.Completed })}
+                        onClick={() => setFilter(Filter.Completed)}
+                    >
+                        Completed
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
