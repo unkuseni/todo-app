@@ -7,6 +7,14 @@ $Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
 $Dark-Grayish-Blue: hsl(236, 9%, 61%);
 $Bright-Blue: hsl(220, 98%, 61%);
 $Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+// datk mode
+$Very-Dark-Blue: hsl(235, 21%, 11%);
+$Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
+$Dark-Grayish-LightBlue: hsl(234, 39%, 85%);
+$Dark-Gray: hsl(236, 33%, 92%); // HOVER
+$Dark-Gray-Blue: hsl(234, 11%, 52%);
+$Items-Border: hsl(233, 14%, 35%);
+$Main-Background: hsl(237, 14%, 26%);
 
 .root {
   display: flex;
@@ -28,6 +36,10 @@ $Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65
 .form {
   display: block;
   width: 100%;
+}
+.form.dark > input {
+  background-color: $Very-Dark-Desaturated-Blue;
+  color: green;
 }
 .form-label {
   width: 20px;
@@ -56,17 +68,18 @@ li {
   border: none;
   outline: none;
   padding-left: 10px;
-  font-size: 1.5em;
+  font-size: 1.25em;
   font-family: 'Josefin Sans', sans-serif;
-  background-color: $Very-Light-Gray;
-  color: $Dark-Grayish-Blue;
 }
 .list-items {
   width: 100%;
-  background: transparent;
+  
   overflow: hidden;
   border-radius: 5px;
-  box-shadow: 0px 5px 27px 1px $Light-Grayish-Blue;
+  box-shadow: 0 5px 15px 1px $Light-Grayish-Blue;
+}
+.list-items.dark {
+  box-shadow: 0 5px 15px 1px $Very-Dark-Blue;
 }
 .item {
   display: flex;
@@ -75,10 +88,12 @@ li {
   justify-items: center;
   align-content: center;
   justify-content: space-between;
-  background-color: $Very-Light-Gray;
-  color: $Very-Dark-Grayish-Blue;
+    background-color: $Very-Light-Gray;
+  color: $Very-Light-Gray;
+  
   margin: 0px;
-
+  border-bottom: 1px solid $Dark-Grayish-Blue;
+  border-radius: 0px;
   button {
     display: inline-flex;
     align-items: center;
@@ -100,28 +115,45 @@ li {
   label {
     input[type='checkbox'] {
       appearance: none;
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 22.5px;
+      height: 22.5px;
       border-radius: 50%;
       background: #fff;
       border: 1px solid $Very-Light-Grayish-Blue;
       outline: none;
       margin-right: 10px;
       cursor: pointer;
+
       &:checked {
         background: no-repeat center / 50% url('../../assets/icon-check.svg'), $Check-Background;
       }
     }
     display: flex;
     flex-direction: row;
-    align-items: start;
-    justify-items: center;
-    justify-content: space-around;
+    align-items: center;
+    justify-items: start;
+    justify-content: start;
     align-content: center;
+    width: 100%;
+    gap: 0px 7.5px;
+    span {
+      align-self: end;
+    }
   }
-  border-bottom: 1px solid $Dark-Grayish-Blue;
-  border-radius: 0px;
 }
+.list-items.dark > ul > .item {
+  background-color: $Very-Dark-Desaturated-Blue;
+  border-bottom: 1px solid $Items-Border;
+  label {
+    input[type='checkbox'] {
+      background: transparent;
+      &:checked {
+        background: no-repeat center / 50% url('../../assets/icon-check.svg'), $Check-Background;
+      }
+    }
+  }
+}
+
 .tracker {
   display: flex;
   width: 100%;
@@ -143,6 +175,16 @@ li {
   padding-right: 10px;
   padding-left: 10px;
 }
+.list-items.dark > .tracker {
+background-color: $Very-Dark-Desaturated-Blue;
+
+}
+// write a media query to show the filters
+.tracker > .filters {
+  // no box  shadow
+  
+}
+
 .filters {
   background-color: $Very-Light-Gray;
   color: $Dark-Grayish-Blue;
@@ -155,6 +197,8 @@ li {
   align-content: center;
   justify-content: center;
   gap: 0px 10px;
+  // subtle box shadow
+  box-shadow: 0 -5px 15px 1px $Light-Grayish-Blue;
   cursor: inherit;
   button {
     padding: 0;
@@ -178,8 +222,13 @@ li {
   }
   border-radius: 5px;
 }
+.filters.dark {
+  background: $Very-Dark-Desaturated-Blue;
+  box-shadow: 0 -5px 15px 1px $Very-Dark-Blue;
+}
 .completed {
   text-decoration: line-through;
+  color: $Dark-Gray-Blue;
 }
 button.active {
   font-weight: bold;
