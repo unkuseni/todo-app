@@ -43,10 +43,10 @@ const App: React.FC<AppProps> = ({ className }) => {
                         [styles['dark-theme']]: theme === 'dark',
                         [styles['light-theme']]: theme === 'light',
                     },
-                    styles.container
+                    styles.root
                 )}
             >
-                <div>
+                <div className={styles.container}>
                     <div className={styles.header}>
                         <h2>TODO</h2>
                         <button onClick={toggleTheme} className={styles.theme_button}>

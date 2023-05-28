@@ -188,7 +188,9 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
                 <div className={classNames(styles.tracker, theme === 'dark' && styles.dark)}>
                     <span>{remainingItems} items left</span>
                     {!isMobile && (
-                        <div className={classNames(styles.filters, theme === 'dark' && styles.dark)}>
+                        <div
+                            className={classNames(styles.filters, theme === 'dark' && styles.dark)}
+                        >
                             <button
                                 className={classNames({ active: filter === Filter.All })}
                                 onClick={() => setFilter(Filter.All)}
@@ -207,25 +209,30 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
                             >
                                 Completed
                             </button>
-                        </div>)}
-                    <button onClick={handleClearCompleted}>Clear completed</button>
+                        </div>
+                    )}
+                    <button onClick={handleClearCompleted} type="button">
+                        Clear completed
+                    </button>
                 </div>
             </div>
-            { isMobile && (
+            {isMobile && (
                 <div className={classNames(styles.filters, theme === 'dark' && styles.dark)}>
                     <button
+                        name="filter"
                         className={classNames({ active: filter === Filter.All })}
                         onClick={() => setFilter(Filter.All)}
                     >
                         All
                     </button>
                     <button
+                        name="filter"
                         className={classNames({ active: filter === Filter.Active })}
                         onClick={() => setFilter(Filter.Active)}
                     >
                         Active
                     </button>
-                    <button
+                    <button name='filter'
                         className={classNames({ active: filter === Filter.Completed })}
                         onClick={() => setFilter(Filter.Completed)}
                     >

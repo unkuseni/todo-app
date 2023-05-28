@@ -1,4 +1,4 @@
-.container {
+.root {
   display: block;
   flex-direction: column;
   align-items: center;
@@ -12,6 +12,12 @@
   min-width: 350px;
   margin: 0px;
   padding: 10px;
+  @media screen and (min-width: 768px) {
+    .container {
+      max-width: 634px;
+      margin: 0 auto;
+    }
+  }
 }
 .header {
   display: flex;
@@ -22,8 +28,12 @@
   justify-content: space-between;
   padding: 10px;
   margin-top: 30px;
-  font-size: 1.5em;
+  font-size: clamp(1.6em, 2vw, 4em);
+  @media screen and (min-width: 634px) {
+    margin-top: 50px;
+  }
 }
+
 .drag_text {
   display: flex;
   flex-direction: row;
@@ -45,7 +55,7 @@
 h2 {
   letter-spacing: 10px;
 }
-.container.light-theme {
+.root.light-theme {
   $mobile-img: url(./assets/bg-mobile-light.jpg);
   $desktop-img: url(./assets/bg-desktop-light.jpg);
   $Very-Light-Gray: hsl(0, 0%, 98%);
@@ -61,7 +71,7 @@ h2 {
     background: $Very-Light-Gray $desktop-img top / contain no-repeat;
   }
 }
-.container.dark-theme {
+.root.dark-theme {
   $Very-Dark-Blue: hsl(235, 21%, 11%);
   $Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
   $Light-Blue: hsl(234, 39%, 85%);
@@ -76,6 +86,10 @@ h2 {
     color: $Dark-Grayish-Blue;
   }
   @media screen and (min-width: 768px) {
-    background: $Very-Dark-Blue $desktop-img top / contain no-repeat;
+    background-color: $Very-Dark-Blue;
+    background-image: $desktop-img;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: contain;
   }
 }

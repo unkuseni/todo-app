@@ -7,7 +7,7 @@ $Very-Dark-Grayish-Blue: hsl(235, 19%, 35%);
 $Dark-Grayish-Blue: hsl(236, 9%, 61%);
 $Bright-Blue: hsl(220, 98%, 61%);
 $Check-Background: linear-gradient(135deg, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-// datk mode
+// dark mode
 $Very-Dark-Blue: hsl(235, 21%, 11%);
 $Very-Dark-Desaturated-Blue: hsl(235, 24%, 19%);
 $Dark-Grayish-LightBlue: hsl(234, 39%, 85%);
@@ -39,7 +39,6 @@ $Main-Background: hsl(237, 14%, 26%);
 }
 .form.dark > input {
   background-color: $Very-Dark-Desaturated-Blue;
-  color: green;
 }
 .form-label {
   width: 20px;
@@ -57,7 +56,7 @@ $Main-Background: hsl(237, 14%, 26%);
   font-size: inherit;
   font-family: 'Josefin Sans', sans-serif;
   background-color: $Very-Light-Gray;
-  color: $Dark-Grayish-Blue;
+  color: $Very-Light-Gray;
 }
 
 li {
@@ -73,13 +72,13 @@ li {
 }
 .list-items {
   width: 100%;
-  
+
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 0 5px 15px 1px $Light-Grayish-Blue;
 }
 .list-items.dark {
-  box-shadow: 0 5px 15px 1px $Very-Dark-Blue;
+  box-shadow: none;
 }
 .item {
   display: flex;
@@ -88,9 +87,9 @@ li {
   justify-items: center;
   align-content: center;
   justify-content: space-between;
-    background-color: $Very-Light-Gray;
+  background-color: $Very-Light-Gray;
   color: $Very-Light-Gray;
-  
+
   margin: 0px;
   border-bottom: 1px solid $Dark-Grayish-Blue;
   border-radius: 0px;
@@ -174,16 +173,15 @@ li {
   }
   padding-right: 10px;
   padding-left: 10px;
+  // font size for large screens
+  @media screen and (min-width: 768px) {
+    font-size: 1.2em;
+  }
 }
 .list-items.dark > .tracker {
-background-color: $Very-Dark-Desaturated-Blue;
-
+  background-color: $Very-Dark-Desaturated-Blue;
 }
 // write a media query to show the filters
-.tracker > .filters {
-  // no box  shadow
-  
-}
 
 .filters {
   background-color: $Very-Light-Gray;
@@ -215,22 +213,40 @@ background-color: $Very-Dark-Desaturated-Blue;
     }
     border-radius: 0px;
     font-weight: 700;
-    font-size: 1px;
     font-size: 1.3em;
     outline: none;
-    color: inherit;
+    &.active {
+      font-weight: bold;
+      color: $Bright-Blue;
+    }
   }
+
   border-radius: 5px;
 }
 .filters.dark {
   background: $Very-Dark-Desaturated-Blue;
-  box-shadow: 0 -5px 15px 1px $Very-Dark-Blue;
+  box-shadow: none;
+  button {
+    color: $Very-Dark-Grayish-Blue;
+    &:focus {
+      color: $Bright-Blue;
+      border: none;
+    }
+    &:active {
+      color: $Bright-Blue;
+    }
+  }
+  button:hover {
+    color: $Very-Light-Gray;
+  }
+}
+.tracker > .filters {
+  // no box  shadow
+  box-shadow: none;
+  background: transparent;
+  width: 60%;
 }
 .completed {
   text-decoration: line-through;
   color: $Dark-Gray-Blue;
-}
-button.active {
-  font-weight: bold;
-  color: $Bright-Blue;
 }
