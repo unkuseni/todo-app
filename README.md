@@ -24,6 +24,15 @@ Your users should be able to:
   - SASS
   - CODUX: To check if the component were working as expected
  - React beautiful dnd: for drag and drop
+ ## SCREENSHOTS
+ ### SCREENSHOTS
+ ![](./screenshots/Web%20capture_29-5-2023_232745_localhost.jpeg)
+ ![](./screenshots/Web%20capture_29-5-2023_23331_localhost.jpeg)
+ ![](./screenshots/Web%20capture_29-5-2023_23330_localhost.jpeg)
+ ![](./screenshots/Web%20capture_29-5-2023_23289_localhost.jpeg)
+ ![](./screenshots/Web%20capture_29-5-2023_233245_localhost.jpeg)
+
+
  ## WHAT I LEARNED
  I learn how how to do drag  and drop although it is some hell of a patch work I did
  I learned how to use typescript [like types: it's so cool yet it feels so alien] but I know how I'm never going back just javascript
