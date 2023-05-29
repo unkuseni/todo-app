@@ -39,6 +39,7 @@ $Main-Background: hsl(237, 14%, 26%);
 }
 .form.dark > input {
   background-color: $Very-Dark-Desaturated-Blue;
+   color: $Very-Light-Gray;
 }
 .form-label {
   width: 20px;
@@ -56,7 +57,7 @@ $Main-Background: hsl(237, 14%, 26%);
   font-size: inherit;
   font-family: 'Josefin Sans', sans-serif;
   background-color: $Very-Light-Gray;
-  color: $Very-Light-Gray;
+  color: $Very-Dark-Grayish-Blue;
 }
 
 li {
@@ -88,7 +89,8 @@ li {
   align-content: center;
   justify-content: space-between;
   background-color: $Very-Light-Gray;
-  color: $Very-Light-Gray;
+  
+  color: $Very-Dark-Grayish-Blue;
 
   margin: 0px;
   border-bottom: 1px solid $Dark-Grayish-Blue;
@@ -143,6 +145,7 @@ li {
 .list-items.dark > ul > .item {
   background-color: $Very-Dark-Desaturated-Blue;
   border-bottom: 1px solid $Items-Border;
+  color: $Very-Light-Gray;
   label {
     input[type='checkbox'] {
       background: transparent;
@@ -185,7 +188,6 @@ li {
 
 .filters {
   background-color: $Very-Light-Gray;
-  color: $Dark-Grayish-Blue;
   width: 100%;
   height: 40px;
   display: flex;
@@ -199,6 +201,7 @@ li {
   box-shadow: 0 -5px 15px 1px $Light-Grayish-Blue;
   cursor: inherit;
   button {
+    color: $Dark-Grayish-Blue;
     padding: 0;
     border: none;
     &:hover {
