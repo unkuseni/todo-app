@@ -113,7 +113,7 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
         () =>
             filteredTasks.map((task, index) => (
                 <Draggable key={task.id.toString()} draggableId={task.id.toString()} index={index}>
-                    {(provided) => (
+                    {(provided: any) => (
                         <li
                             key={task.id.toString()}
                             ref={provided.innerRef}
@@ -140,7 +140,7 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
         [filteredTasks, handleComplete, handleDelete]
     );
 
-    const onDragEnd = useCallback((result) => {
+    const onDragEnd = useCallback((result: any) => {
         if (!result.destination) {
             return;
         }
@@ -177,7 +177,7 @@ export const Todo: React.FC<TodoProps> = ({ className, theme }) => {
             <div className={classNames(styles['list-items'], theme === 'dark' && styles.dark)}>
                 <DragDropContext onDragEnd={onDragEnd}>
                     <Droppable droppableId={`${tasks}`}>
-                        {(provided) => (
+                        {(provided: any) => (
                             <ul {...provided.droppableProps} ref={provided.innerRef}>
                                 {taskItems}
                                 {provided.placeholder}
